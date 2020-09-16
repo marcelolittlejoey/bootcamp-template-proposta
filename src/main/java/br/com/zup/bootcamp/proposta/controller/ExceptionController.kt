@@ -1,7 +1,9 @@
 package br.com.zup.bootcamp.proposta.controller
 
 import br.com.zup.bootcamp.proposta.exception.InvalidFieldException
+import br.com.zup.bootcamp.proposta.exception.ProposalAlreadyExistException
 import br.com.zup.bootcamp.proposta.model.v1.FieldErrorMessage
+import br.com.zup.bootcamp.proposta.model.v1.GenericMessage
 import br.com.zup.bootcamp.proposta.model.v1.InvalidFieldMessage
 import org.slf4j.LoggerFactory
 import org.springframework.http.HttpStatus
@@ -23,5 +25,12 @@ class ExceptionController {
         )
         logger.warn("ExceptionController -> handleRequiredFieldException -> ${e.message}", e)
         return ResponseEntity(errorMessage, HttpStatus.PRECONDITION_FAILED)
+    }
+
+    @ExceptionHandler(ProposalAlreadyExistException::class)
+    fun handleProposalAlreadyExistException(e: ProposalAlreadyExistException): ResponseEntity<GenericMessage> {
+        val errorMessage = GenericMessage(e.type, e.message)
+        logger.warn("ExceptionController -> handleProposalAlreadyExistException -> ${e.message}", e)
+        return ResponseEntity(errorMessage, HttpStatus.UNPROCESSABLE_ENTITY)
     }
 }

@@ -1,4 +1,22 @@
 package br.com.zup.bootcamp.proposta.entity
 
-class ProposalEntity {
-}
+import org.hibernate.annotations.GenericGenerator
+import java.math.BigDecimal
+import javax.persistence.Entity
+import javax.persistence.GeneratedValue
+import javax.persistence.Id
+import javax.persistence.Table
+
+@Entity
+@Table(name = "Proposal")
+class ProposalEntity(
+    @Id
+    val id: String,
+    val name: String,
+    val email: String,
+    val address: String,
+    val documentType: String,
+    val documentNumber: String,
+    val salary: BigDecimal
+)
+

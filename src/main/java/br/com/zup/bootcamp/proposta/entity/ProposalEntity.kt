@@ -1,9 +1,7 @@
 package br.com.zup.bootcamp.proposta.entity
 
-import org.hibernate.annotations.GenericGenerator
 import java.math.BigDecimal
 import javax.persistence.Entity
-import javax.persistence.GeneratedValue
 import javax.persistence.Id
 import javax.persistence.Table
 
@@ -17,6 +15,7 @@ class ProposalEntity(
     val address: String,
     val documentType: String,
     val documentNumber: String,
-    val salary: BigDecimal
+    val salary: BigDecimal,
+    var status: String? = null
 )
 

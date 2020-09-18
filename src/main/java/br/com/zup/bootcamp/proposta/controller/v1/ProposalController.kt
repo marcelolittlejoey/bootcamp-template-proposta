@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-class ProposalController(val proposalService: ProposalService) {
+class ProposalController(private val proposalService: ProposalService) {
 
     private val logger=LoggerFactory.getLogger(ProposalController::class.java)
 
